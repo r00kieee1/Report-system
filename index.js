@@ -5,19 +5,6 @@ const divList = document.querySelector('.listHolder');
 const listUl = document.querySelector('.list');
 const lis = listUl.children;
 
-addBtn.addEventListener('click', () => {
-    if(addInput.value === '') {
-        alert('Enter a student name please!');
-    } else {
-      const ul = divList.querySelector('ul');
-      const li = document.createElement('li');
-      li.innerHTML = addInput.value;
-      addInput.value = '';
-      ul.appendChild(li);
-      createBtn(li);
-    }   
-});
-
 refreshBtn.addEventListener('click', () => {
   window.location.reload();
 })
@@ -44,3 +31,26 @@ divList.addEventListener('click', (event) => {
   }
 })
 
+document.addEventListener("DOMContentLoaded", function () {
+  const ul = document.querySelector('.list');
+  const addButton = document.querySelector('#addBtn');
+
+  addButton.addEventListener("click", function () {
+    if(addInput.value === '') {
+      alert ('Enter a student name please!')
+    } else {
+      const li = document.createElement("li");
+      const ul = divList.querySelector('ul');
+      li.textContent = addInput.value;
+      addInput.value = '';
+      ul.appendChild(li);
+      createBtn(li);
+    }    
+  });
+
+  ul.addEventListener("click", function (event) {
+      if (event.target.tagName === "LI") {
+          window.location.href = 'Report-card/card.html';
+      }
+  });
+});
