@@ -1,74 +1,48 @@
 var db = new Dexie("StudentDatabase");
 
-    // DB with single table "students" with primary key "id" and
+    // DB with single table "friends" with primary key "id" and
     // indexes on properties "name" and "age"
     db.version(1).stores({
-      students: `
-        class,
+      friends: `
+        id,
         name,
-        `,
+        age`,
     });
 
+    // Now add some values.
+    db.friends.bulkPut([
+      { id: 1, name: "Josephine", age: 21 },
+      { id: 2, name: "Per", age: 75 },
+      { id: 3, name: "Simon", age: 5 },
+      { id: 4, name: "Sara", age: 50, notIndexedProperty: 'foo' }
+    ]).then(() => {
 
-//     db.version(1).stores({
-//         students: 'class, name', // Define your object store and its properties
-//       }).upgrade(async (trans) => {
-//         // Create an index on the 'name' property
-//         await trans.table('students').createIndex('name', 'name', { unique: true });
-      
-//         // Create an index on the 'email' property with a unique constraint
-//         await trans.table('students').createIndex('class', 'class', { unique: false });
-//     });
+      return db.friends.where("age").between(0, 25).toArray();
 
-//     // Query using the 'name' index
-// const result = await db.students.where('name').equals(lis).toArray();
+    }).then(friends => {
 
-// // Query using the 'email' index
-// const user = await db.students.where('class').equals(listUl).first();
+      alert("Found young friends: " +
+        friends.map(friend => friend.name));
 
+      return db.friends
+        .orderBy("age")
+        .reverse()
+        .toArray();
 
-//     // Now add some values.
-//     db.students.bulkPut([
-//       { class: listUl, name: lis, },
+    }).then(friends => {
 
-//     ]).then(() => {
+      alert("Friends in reverse age order: " +
+        friends.map(friend => `${friend.name} ${friend.age}`));
 
-//       return db.students.where("age").between(0, 25).toArray();
+      return db.friends.where('name').startsWith("S").keys();
 
-//     }).then(students => {
+    }).then(friendNames => {
 
-//       alert("Found young students: " +
-//         students.map(friend => friend.name));
+      alert("Friends on 'S': " + friendNames);
 
-//       return db.students
-//         .orderBy("age")
-//         .reverse()
-//         .toArray();
+    }).catch(err => {
 
-//     }).then(students => {
+      alert("Ouch... " + err);
 
-//       alert("students in reverse age order: " +
-//         students.map(friend => `${friend.name} ${friend.age}`));
-
-//       return db.students.where('name').startsWith("S").keys();
-
-//     }).then(friendNames => {
-
-//       alert("students on 'S': " + friendNames);
-
-//     }).catch(err => {
-
-//       alert("Ouch... " + err);
-
-//     });
-
-    // const db = new Dexie('StudentDatabase'); // Replace with your actual database name
-
-// Use the `open()` method to open the database.
-db.open().then(() => {
-    // Database opened successfully
-    console.log(`Database ${db.name} opened. Version: ${db.verno}`);
-}).catch((error) => {
-    // Error opening the database
-    console.error(`Error opening database: ${error}`);
-});
+    });
+  
