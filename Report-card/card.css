@@ -13,9 +13,10 @@ table {
 }
 
 th, td {
-    border: 1px solid #000;
+    border: 1px solid #312525;
     padding: 8px;
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 button {

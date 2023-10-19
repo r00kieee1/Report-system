@@ -6,7 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const examMarks = document.querySelectorAll(".exam-mark");
     const totalMarksDisplay = document.getElementById("total-marks");
     const percentageDisplay = document.getElementById("percentage");
-    const gradeDisplay = document.getElementById("grades")
+    const gradeDisplay = document.getElementById("grades");
+    const clickGrade = document.getElementsByClassName("grade");
 
     calculateTotalButton.addEventListener("click", function () {
         let totalMarks = 0;
@@ -25,18 +26,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     findGradeButton.addEventListener('click', function () {
-        if(parseFloat(percentageDisplay) <= 39) {
+        if(parseFloat(totalMarksDisplay.textContent) <= 467) {
             gradeDisplay.textContent = 'Fail';
-        } else if(parseFloat(percentage) <= 49) {
+        } else if(parseFloat(totalMarksDisplay.textContent) >= 468 && parseFloat(totalMarksDisplay.textContent) <= 540) {
+            gradeDisplay.textContent = 'E';
+        } else if(parseFloat(totalMarksDisplay.textContent) <= 568) {
             gradeDisplay.textContent = 'D';
-        } else if(parseFloat(percentage) <= 59) {
+        } else if(parseFloat(totalMarksDisplay.textContent) <= 719) {
             gradeDisplay.textContent = 'C';
-        } else if(parseFloat(percentage) <= 69) {
+        } else if(parseFloat(totalMarksDisplay.textContent) <= 839) {
             gradeDisplay.textContent = 'B';
-        } else if(parseFloat(percentage) <= 89) {
+        } else if(parseFloat(totalMarksDisplay.textContent) >=840 && parseFloat(totalMarksDisplay.textContent) <1080) {
             gradeDisplay.textContent = 'A';
-        } else {
+        } else if(parseFloat(totalMarksDisplay.textContent) >= 1081 && parseFloat(totalMarksDisplay.textContent) <=1200){
             gradeDisplay.textContent = 'A+';
+        } else {
+            gradeDisplay.textContent = 'Nil';
         }
     });
 });
