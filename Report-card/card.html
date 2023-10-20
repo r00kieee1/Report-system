@@ -10,9 +10,9 @@
         <table>
             <thead>
                 <tr>
-                    <th>Subjects</th>
-                    <th>c.a Test Marks</th>
-                    <th>Exam Marks</th>
+                    <th>subjects</th>
+                    <th>c.a test marks</th>
+                    <th>exam marks</th>
                 </tr>
             </thead>
             <tbody>
@@ -78,22 +78,25 @@
                 </tr>
             </tbody>
         </table><br>
-        <table>
+        <table id="t2">
             <tbody>
+                <thead id="th2">
+                    <tr>
+                        <th id="hd">
+                            <p><em>Total Marks:</em> <em><b><span id="total-marks">0</span></b></em> out of <em><b>1,200</b></em></p>
+                        </th>
+                        <th id="hd">
+                            <p>Average: <em><b><span id="percentage">0.000</span></b></em>%</p>
+                        </th>
+                        <th id="hd">
+                            <p>Final Grade: <em><b><span id="grades">Nil</span></b></em></p>
+                        </th>
+                    </tr>
+                </thead>
                 <tr>
-                    <td>Total Marks</td>
                     <td><button id="calculate-total">Calculate Total Marks</button></td>
-                    <td><p><em>Total Marks:</em> <em><b><span id="total-marks">0</span></b></em> out of <em><b>1,200</b></em></p></td>
-                </tr>
-                <tr>
-                    <td>Average</td>
                     <td><button id="calculate-percent">Calculate Average</button></td>
-                    <td><p>Average: <em><b><span id="percentage">0.000</span></b></em>%</p></td>
-                </tr>
-                <tr>
-                    <td>Grade</td>
                     <td><button id="grade">Calculate Grade</button></td>
-                    <td><p>Final Grade: <em><b><span id="grades">Nil</span></b></em></p></td>
                 </tr>
             </tbody>
         </table>

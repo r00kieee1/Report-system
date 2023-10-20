@@ -10,13 +10,34 @@ h1 {
 table {
     width: 100%;
     border-collapse: collapse;
+    font: 300 16px/1.5 'Roboto', sans-serif
 }
 
 th, td {
-    border: 1px solid #312525;
+    color: #4b4a4a;
+    border: 1px solid #978167;
     padding: 8px;
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+}
+
+thead, th{
+    color: #d19046;
+    background-color: #aeee90;
+    font: 300 22px/1.5 'Roboto', sans-serif;
+}
+
+#t2 {
+    
+}
+
+#th2{
+    color: #b17026;
+    background-color: #bbe9a6;
+    font: 300 22px/1.5 'Roboto', sans-serif;
+}
+
+#hd {
+    color: #a5733a;
 }
 
 button {
