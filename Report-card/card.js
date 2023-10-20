@@ -7,7 +7,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const totalMarksDisplay = document.getElementById("total-marks");
     const percentageDisplay = document.getElementById("percentage");
     const gradeDisplay = document.getElementById("grades");
-    const clickGrade = document.getElementsByClassName("grade");
+    const downLoad = document.getElementById("dd");
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
 
     calculateTotalButton.addEventListener("click", function () {
         let totalMarks = 0;
@@ -36,12 +39,31 @@ document.addEventListener("DOMContentLoaded", function () {
             gradeDisplay.textContent = 'C';
         } else if(parseFloat(totalMarksDisplay.textContent) <= 839) {
             gradeDisplay.textContent = 'B';
-        } else if(parseFloat(totalMarksDisplay.textContent) >=840 && parseFloat(totalMarksDisplay.textContent) <1080) {
+        } else if(parseFloat(totalMarksDisplay.textContent) >=840 && parseFloat(totalMarksDisplay.textContent) <= 1080) {
             gradeDisplay.textContent = 'A';
         } else if(parseFloat(totalMarksDisplay.textContent) >= 1081 && parseFloat(totalMarksDisplay.textContent) <=1200){
             gradeDisplay.textContent = 'A+';
         } else {
             gradeDisplay.textContent = 'Nil';
         }
+    });
+
+    downLoad.addEventListener('click', function () {
+       const capture = document.body;
+       
+       canvas.clientWidth = capture.scrollWidth;
+       canvas.clientHeight = capture.scrollHeight;
+
+       ctx.drawWindow(window, 0, 0, canvas.width, canvas.height, "rgb(255, 255, 255)");
+    
+        const dataURL = canvas.toDataURL("image/png");
+
+        const a = document.createElement("a");
+        a.href = dataURL;
+        a.download = "page_content.png";
+        a.style.display = "none";
+        document.body.appendChild(a);
+
+        a.onclick(capture);
     });
 });
