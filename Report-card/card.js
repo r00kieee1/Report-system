@@ -7,9 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const totalMarksDisplay = document.getElementById("total-marks");
     const percentageDisplay = document.getElementById("percentage");
     const gradeDisplay = document.getElementById("grades");
-    const downLoad = document.getElementById("dd");
-    const canvas = document.getElementById("canvas");
-    const ctx = canvas.getContext("2d");
+    const downLoad = document.querySelectorAll("[data-download]");
 
 
     calculateTotalButton.addEventListener("click", function () {
@@ -48,22 +46,21 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    downLoad.addEventListener('click', function () {
-       const capture = document.body;
-       
-       canvas.clientWidth = capture.scrollWidth;
-       canvas.clientHeight = capture.scrollHeight;
-
-       ctx.drawWindow(window, 0, 0, canvas.width, canvas.height, "rgb(255, 255, 255)");
-    
-        const dataURL = canvas.toDataURL("image/png");
-
+    downLoad.forEach(button => {
+        const id = button.dataset.download;
+        const toDownlaod = document.getElementById(id);
         const a = document.createElement("a");
-        a.href = dataURL;
-        a.download = "page_content.png";
-        a.style.display = "none";
-        document.body.appendChild(a);
 
-        a.onclick(capture);
+        a.href = toDownlaod.id;
+        a.download = "";
+        a.style.display = "none";
+
+        button.addEventListener('click', () => {
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
     });
+   
+
 });
