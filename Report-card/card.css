@@ -2,6 +2,10 @@ h1 {
     text-align: center;
 }
 
+h1, h3{
+    color: #4e4b4b;
+}
+
 #report-card {
     margin: 0 auto;
     width: 60%;
@@ -67,16 +71,6 @@ button:hover {
     position: fixed;
 }
 
-a{
-    margin-top: 0;
-    font-size: 17px;
-    border: 1px solid rgb(14, 243, 14);
-    display: inline-flex;
-    flex-wrap: wrap;
-    align-content: center;
-    left: 1%;
-    position: fixed;
-}
 
 #dd:hover {
     right: 2%;

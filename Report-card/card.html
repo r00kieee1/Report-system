@@ -3,16 +3,18 @@
 <head>
     <title>Report Sheet</title>
     <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" type="text/css" href="card.css">
 </head>
-<body style="text-transform: capitalize;" onload="allowDownload()">
-    <a id="download">Download</a>
-    <button id="dd" type="button" data-download="report-card">Download</button>
+<body style="text-transform: capitalize;">
+    <a id="dd" style="display: none">Download</a>
+    <button id="dd" type="button" onclick="allowDownload()">Download</button>
+    
+    <div id="report-card">
     <h1><em>Al-Falaq College</em></h1>
     <h3><p>report sheet for 2022/2023 academic session</p></h3>
-    <div id="report-card">
+
         <table>
             <thead>
                 <tr>
@@ -99,34 +101,30 @@
                         </th>
                     </tr>
                 </thead>
-                <tr>
-                    <td><button id="calculate-total">Calculate Total Marks</button></td>
-                    <td><button id="calculate-percent">Calculate Average</button></td>
-                    <td><button id="grade">Calculate Grade</button></td>
-                </tr>
+                
             </tbody>
         </table>
        
-      
     </div>
+    <tr>
+        <td><button id="calculate-total">Calculate Total Marks</button></td>
+        <td><button id="calculate-percent">Calculate Average</button></td>
+        <td><button id="grade">Calculate Grade</button></td>
+    </tr>
 
     <script type="text/javascript">
-        function allowDownload(){
-            $("#download").click();
-        };
-        $(document).ready(function () {
+        function allowDownload() {
             var element = $("#report-card");
 
-            $("#download").on(('click', function() {
-                html2canvas(element, {
-                    onrendered: function(canvas){
-                        var imageData = canvas.toDataURL('report/jpg');
-                        var newData = imageData.replace(/^data:image\/jpg/, "data:application/octet-stream");
-                        $("#download").attr("download", 'report.jpg').attr("href", newData);
-                    }
-                })
-            }))
-        })
+            html2canvas(element, {
+                onrendered: function(canvas) {
+                    var imageData = canvas.toDataURL('image/jpeg');
+                    var newData = imageData.replace(/^data:image\/jpeg/, "data:application/octet-stream");
+                    $("#dd").attr("download", 'report.jpg').attr("href", newData).show();
+                    $("#dd")[0].click();
+                }
+            });
+        }
     </script>
     
     <script src="card.js"></script>
