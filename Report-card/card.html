@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Report Sheet</title>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
     <link rel="stylesheet" type="text/css" href="card.css">
 </head>
-<body style="text-transform: capitalize;">
+<body style="text-transform: capitalize;" onload="allowDownload()">
+    <a id="download">Download</a>
     <button id="dd" type="button" data-download="report-card">Download</button>
     <h1><em>Al-Falaq College</em></h1>
     <h3><p>report sheet for 2022/2023 academic session</p></h3>
@@ -104,6 +109,25 @@
        
       
     </div>
+
+    <script type="text/javascript">
+        function allowDownload(){
+            $("#download").click();
+        };
+        $(document).ready(function () {
+            var element = $("#report-card");
+
+            $("#download").on(('click', function() {
+                html2canvas(element, {
+                    onrendered: function(canvas){
+                        var imageData = canvas.toDataURL('report/jpg');
+                        var newData = imageData.replace(/^data:image\/jpg/, "data:application/octet-stream");
+                        $("#download").attr("download", 'report.jpg').attr("href", newData);
+                    }
+                })
+            }))
+        })
+    </script>
     
     <script src="card.js"></script>
 </body>

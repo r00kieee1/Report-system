@@ -67,6 +67,17 @@ button:hover {
     position: fixed;
 }
 
+a{
+    margin-top: 0;
+    font-size: 17px;
+    border: 1px solid rgb(14, 243, 14);
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-content: center;
+    left: 1%;
+    position: fixed;
+}
+
 #dd:hover {
     right: 2%;
 }
