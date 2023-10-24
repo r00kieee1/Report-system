@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", function () {
 const addInput = document.querySelector('#addInput');
 const addBtn = document.querySelector('#addBtn');
 const refreshBtn = document.querySelector('#refreshBtn');
@@ -17,7 +18,7 @@ function createBtn(li) {
   return li;
 }
 for(var i = 0; i < lis.length; i++) {
-  createBtn(lis[i])
+  createBtn(lis[i]);
 }
 
 divList.addEventListener('click', (event) => {
@@ -31,9 +32,9 @@ divList.addEventListener('click', (event) => {
   }
 })
 
-document.addEventListener("DOMContentLoaded", function () {
   const ul = document.querySelector('.list');
   const addButton = document.querySelector('#addBtn');
+  const reportCard = document.getElementById("reportCard");
 
   addButton.addEventListener("click", function () {
     if(addInput.value === '') {
@@ -41,16 +42,44 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       const li = document.createElement("li");
       const ul = divList.querySelector('ul');
-      li.textContent = addInput.value;
+      const listNameSpan = document.createElement('span');
+      console.log(listNameSpan, 'mango');
+      listNameSpan.className = 'listName'; 
+      listNameSpan.textContent = addInput.value; 
       addInput.value = '';
+      li.appendChild(listNameSpan); 
       ul.appendChild(li);
       createBtn(li);
+
+      const listItems = document.querySelectorAll(".list li");
+      listItems.forEach(function (item, index) {
+        item.addEventListener("click", function () {
+            const itemText = item.querySelector(".listName").textContent;
+            console.log(itemText, 'new error');
+            reportCard.search = `?item${index}=${encodeURIComponent(itemText)}`;
+            reportCard.click();
+        });
+      });
     }    
   });
 
   ul.addEventListener("click", function (event) {
       if (event.target.tagName === "LI") {
-          window.location.href = 'Report-card/card.html';
-      }
+        const itemText = event.target.querySelector(".listName");
+        if (itemText) {
+            console.log(itemText.textContent, 'here');
+        }
+      };
   });
+
+  const listItems = document.querySelectorAll(".list li");
+  listItems.forEach(function (item, index) {
+    item.addEventListener("click", function () {
+        const itemText = item.querySelector(".listName").textContent;
+        console.log(itemText, 'banana');
+        reportCard.search = `?item${index}=${encodeURIComponent(itemText)}`;
+        reportCard.click();
+    });
+});
+
 });

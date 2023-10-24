@@ -62,5 +62,15 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
    
+    const queryParams = new URLSearchParams(location.search);
+    const selectedItems = [];
 
+    queryParams.forEach(function (value, key) {
+        if (key.startsWith("item")) {
+            selectedItems.push(value);
+        }
+    });
+
+    const nameField = document.getElementById("nameField");
+    nameField.textContent = selectedItems.join("<br>");
 });
