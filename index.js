@@ -43,7 +43,6 @@ divList.addEventListener('click', (event) => {
       const li = document.createElement("li");
       const ul = divList.querySelector('ul');
       const listNameSpan = document.createElement('span');
-      console.log(listNameSpan, 'mango');
       listNameSpan.className = 'listName'; 
       listNameSpan.textContent = addInput.value; 
       addInput.value = '';
@@ -55,7 +54,6 @@ divList.addEventListener('click', (event) => {
       listItems.forEach(function (item, index) {
         item.addEventListener("click", function () {
             const itemText = item.querySelector(".listName").textContent;
-            console.log(itemText, 'new error');
             reportCard.search = `?item${index}=${encodeURIComponent(itemText)}`;
             reportCard.click();
         });
@@ -66,9 +64,6 @@ divList.addEventListener('click', (event) => {
   ul.addEventListener("click", function (event) {
       if (event.target.tagName === "LI") {
         const itemText = event.target.querySelector(".listName");
-        if (itemText) {
-            console.log(itemText.textContent, 'here');
-        }
       };
   });
 
@@ -76,7 +71,6 @@ divList.addEventListener('click', (event) => {
   listItems.forEach(function (item, index) {
     item.addEventListener("click", function () {
         const itemText = item.querySelector(".listName").textContent;
-        console.log(itemText, 'banana');
         reportCard.search = `?item${index}=${encodeURIComponent(itemText)}`;
         reportCard.click();
     });
