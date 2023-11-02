@@ -7,10 +7,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" type="text/css" href="card.css">
 </head>
-<body style="text-transform: capitalize;">
-    <a id="dd" style="display: none">Download</a>
+<body style="text-transform: capitalize;" id="body">
+    <a id="dd" style="display: none"></a>
     <button id="dd" type="button" onclick="allowDownload()">Download</button>
-    
+    <button id="print">Print</button>
+
     <div id="report-card">
     <h1><em>Al-Falaq College</em></h1>
     <h3><p>report sheet for 2022/2023 academic session</p></h3>
@@ -132,6 +133,22 @@
                     $("#dd")[0].click();
                 }
             });
+
+            function printReportCard() {
+            let rCard = document.getElementById("report-card").textContent;
+
+            let printWindow = window.open('', '', 'width=800,height=600');
+            printWindow.document.open();
+            printWindow.document.write('');
+            printWindow.document.write(rCard);
+            printWindow.document.write(body);
+            printWindow.document.close();
+
+            printWindow.onload = function () {
+                printWindow.print();
+                printWindow.close();
+            };
+        }
         }
     </script>
     
