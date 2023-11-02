@@ -73,4 +73,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const nameField = document.getElementById("nameField");
     nameField.textContent = selectedItems.join("<br>");
+
+    const printBtn = document.getElementById('print');
+
+    printBtn.addEventListener('click', function() {
+        print();
+    })
 });
