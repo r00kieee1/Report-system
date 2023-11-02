@@ -79,3 +79,23 @@ button:hover {
 p {
     text-align: center;
 }
+
+#print {
+    margin-top: 0;
+    font-size: 17px;
+    border: 1px solid rgb(14, 243, 14);
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-content: center;
+    left: 1%;
+    position: fixed;
+}
+
+@media print {
+    button {
+        display: none;
+    }
+    #dd, #print {
+        display: none;
+    }
+}
