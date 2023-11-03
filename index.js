@@ -8,7 +8,7 @@ const lis = listUl.children;
 
 refreshBtn.addEventListener('click', () => {
   window.location.reload();
-})
+});
 
 function createBtn(li) {
   const remove = document.createElement('button');
