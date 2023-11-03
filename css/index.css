@@ -28,6 +28,7 @@
     padding: 10px;
     font: 300 16px/1.5 'Roboto', sans-serif;
     transition: border 0.3s linear;
+    flex-grow: 1;
   }
   
   input[type="text"]:focus {
@@ -56,42 +57,7 @@
   .btn-primary:focus {
     outline: none;
   }
-  
-  .btn-icon {
-    background: none;
-    border: none;
-    display: inline-block;
-    vertical-align: top;
-    color: #333;
-    cursor: pointer;
-    transition: background 0.5s linear, color 0.3s linear;
-  }
-  
-  .btn-icon:focus {
-    outline: none;
-  }
-  
-  .btn-icon:before {
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-  }
-  
-  .btn-icon.remove:before {
-    content: '\f2ed';
-  }
-  
-  .btn-icon.down:before {
-    content: '\f063';
-  }
-  
-  .btn-icon.up:before {
-    content: '\f062';
-  }
-  
-  /* 
-  name block 
-  ----------
-  */
+ 
   .nameBlock {
     padding: 30px;
     margin: 30px 0;
@@ -103,10 +69,6 @@
     margin: 0 0 30px;
   }
   
-  /* 
-  list holder
-  -----------
-  */
   .listHolder li {
     counter-increment: step-counter;
     overflow: hidden;
@@ -144,10 +106,6 @@
     margin: 0 0 0 20px;
   }
   
-  /* 
-  form holder
-  -----------
-  */
   .formHolder {
     margin: 0 -5px;
     overflow: hidden;
@@ -163,3 +121,24 @@
   .formHolder .col.big {
     width: 60%;
   }
+
+.delete-button {
+  border-radius: 50px;
+  background: #c78d4a;
+  border: none;
+  padding: 1px;
+  display: inline-block;
+  vertical-align: top;
+  width: 15%;
+  height: 2%;
+  color: #fff;
+  cursor: pointer;
+  font: 300 16px/1.5 'Roboto', sans-serif;
+  transition: background 0.5s linear;
+  transition: .3s;
+}
+
+.delete-button:hover{
+  background: rgb(240, 60, 60);
+  transform: scale(1.05);
+}
