@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 const addInput = document.querySelector('#addInput');
-const addBtn = document.querySelector('#addBtn');
+const addButton = document.querySelector('#addBtn');
 const refreshBtn = document.querySelector('#refreshBtn');
 const divList = document.querySelector('.listHolder');
 const listUl = document.querySelector('.list');
@@ -30,15 +30,14 @@ divList.addEventListener('click', (event) => {
       ul.removeChild(li);
     }
   }
-})
+});
 
   const ul = document.querySelector('.list');
-  const addButton = document.querySelector('#addBtn');
   const reportCard = document.getElementById("reportCard");
 
   addButton.addEventListener("click", function () {
     if(addInput.value === '') {
-      alert ('Enter a student name please!')
+      alert ('Enter a student name please!');
     } else {
       const li = document.createElement("li");
       const ul = divList.querySelector('ul');
@@ -59,12 +58,6 @@ divList.addEventListener('click', (event) => {
         });
       });
     }    
-  });
-
-  ul.addEventListener("click", function (event) {
-      if (event.target.tagName === "LI") {
-        const itemText = event.target.querySelector(".listName");
-      };
   });
 
   const listItems = document.querySelectorAll(".list li");
