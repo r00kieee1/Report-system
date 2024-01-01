@@ -22,24 +22,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
     calculatePercentButton.addEventListener("click", function () {
         const totalMarks = parseFloat(totalMarksDisplay.textContent) || 0;
-        const percentage = (totalMarks / (1200)) * 100;
+        const percentage = (totalMarks / (1400)) * 100;
         percentageDisplay.textContent = percentage.toFixed(3);
     });
 
     findGradeButton.addEventListener('click', function () {
-        if(parseFloat(totalMarksDisplay.textContent) <= 467) {
+        if(parseFloat(totalMarksDisplay.textContent) <= 559) {
             gradeDisplay.textContent = 'Fail';
-        } else if(parseFloat(totalMarksDisplay.textContent) >= 468 && parseFloat(totalMarksDisplay.textContent) <= 540) {
+        } else if(parseFloat(totalMarksDisplay.textContent) >= 560 && parseFloat(totalMarksDisplay.textContent) <= 616) {
             gradeDisplay.textContent = 'E';
-        } else if(parseFloat(totalMarksDisplay.textContent) <= 568) {
+        } else if(parseFloat(totalMarksDisplay.textContent) <= 686) {
             gradeDisplay.textContent = 'D';
-        } else if(parseFloat(totalMarksDisplay.textContent) <= 719) {
+        } else if(parseFloat(totalMarksDisplay.textContent) <= 826) {
             gradeDisplay.textContent = 'C';
-        } else if(parseFloat(totalMarksDisplay.textContent) <= 839) {
+        } else if(parseFloat(totalMarksDisplay.textContent) <= 966) {
             gradeDisplay.textContent = 'B';
-        } else if(parseFloat(totalMarksDisplay.textContent) >=840 && parseFloat(totalMarksDisplay.textContent) <= 1080) {
+        } else if(parseFloat(totalMarksDisplay.textContent) >=980 && parseFloat(totalMarksDisplay.textContent) <= 1260) {
             gradeDisplay.textContent = 'A';
-        } else if(parseFloat(totalMarksDisplay.textContent) >= 1081 && parseFloat(totalMarksDisplay.textContent) <=1200){
+        } else if(parseFloat(totalMarksDisplay.textContent) >= 1261 && parseFloat(totalMarksDisplay.textContent) <=1400){
             gradeDisplay.textContent = 'A+';
         } else {
             gradeDisplay.textContent = 'Nil';
