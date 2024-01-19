@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Report Sheet</title>
     <meta charset="UTF-8">
@@ -7,14 +8,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" type="text/css" href="card.css">
 </head>
+
 <body style="text-transform: capitalize;" id="body">
     <a id="dd" style="display: none"></a>
     <button id="dd" type="button" onclick="allowDownload()">Download</button>
     <button id="print">Print</button>
 
     <div id="report-card">
-    <h1><em>Al-Falaq College</em></h1>
-    <h3><p>report sheet for 2022/2023 academic session</p></h3>
+        <h1><em>Al-Falaq College</em></h1>
+        <h3>
+            <p>report sheet for 2022/2023 academic session</p>
+        </h3>
 
         <table>
             <tr>
@@ -110,7 +114,9 @@
                 <thead id="th2">
                     <tr>
                         <th id="hd">
-                            <p><em>Total Marks:</em> <em><b><span id="total-marks">0</span></b></em> out of <em><b>1,400</b></em></p>
+                            <p><em>Total Marks:</em> <em><b><span id="total-marks">0</span></b></em> out of
+                                <em><b>1,400</b></em>
+                            </p>
                         </th>
                         <th id="hd">
                             <p>Average: <em><b><span id="percentage">0.000</span></b></em>%</p>
@@ -120,10 +126,10 @@
                         </th>
                     </tr>
                 </thead>
-                
+
             </tbody>
         </table>
-       
+
     </div>
     <tr>
         <td><button id="calculate-total">Calculate Total Marks</button></td>
@@ -136,7 +142,7 @@
             var element = $("#report-card");
 
             html2canvas(element, {
-                onrendered: function(canvas) {
+                onrendered: function (canvas) {
                     var imageData = canvas.toDataURL('image/jpeg');
                     var newData = imageData.replace(/^data:image\/jpeg/, "data:application/octet-stream");
                     $("#dd").attr("download", 'report.jpg').attr("href", newData).show();
@@ -145,23 +151,24 @@
             });
 
             function printReportCard() {
-            let rCard = document.getElementById("report-card").textContent;
+                let rCard = document.getElementById("report-card").textContent;
 
-            let printWindow = window.open('', '', 'width=800,height=600');
-            printWindow.document.open();
-            printWindow.document.write('');
-            printWindow.document.write(rCard);
-            printWindow.document.write(body);
-            printWindow.document.close();
+                let printWindow = window.open('', '', 'width=800,height=600');
+                printWindow.document.open();
+                printWindow.document.write('');
+                printWindow.document.write(rCard);
+                printWindow.document.write(body);
+                printWindow.document.close();
 
-            printWindow.onload = function () {
-                printWindow.print();
-                printWindow.close();
-            };
-        }
+                printWindow.onload = function () {
+                    printWindow.print();
+                    printWindow.close();
+                };
+            }
         }
     </script>
-    
+
     <script src="card.js"></script>
 </body>
+
 </html>
